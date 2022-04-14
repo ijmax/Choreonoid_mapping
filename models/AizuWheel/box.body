@@ -1,0 +1,46 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+
+name: "Box"
+rootLink: base
+links:
+  -
+    name: base
+    jointType: free
+    translation: [ 0, 0, 0.06 ]
+    mass: 1.0
+    inertia: [
+      0.01, 0,       0,
+      0,       0.01, 0,
+      0,       0,       0.01 ]
+    elements:
+      -
+        type: Shape
+        geometry: { type: Box, size: [ 0.10, 0.10, 0.10 ] }
+        appearance:
+          material:
+            diffuseColor: [ 1.0, 0.0, 0.0 ]
+      -
+        type: Camera
+        name: Kinect
+        translation: [ 0.0, -0.10, 0.10 ]
+        rotation: [ [ 1, 0, 0, 90 ], [ 0, 1, 0, 180 ] ]
+        format: COLOR_DEPTH
+        fieldOfView: 62
+        width: 320
+        height: 240
+        frameRate: 30
+        on: true
+
+      -
+        type: RangeSensor
+        name: VLP-16
+        translation: [ 0, 0, 0.1 ]
+        rotation: [ [ 1, 0, 0, 90 ], [ 0, 1, 0, -90 ] ]
+        yawRange: 360.0
+        yawStep:  0.4
+        pitchRange: 30.0
+        pitchStep: 2.0
+        scanRate:  5
+        maxDistance: 100.0
+        on: true
